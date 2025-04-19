@@ -154,13 +154,13 @@
     <p>Videos: 2</p>
   </div>
 
- <!-- Video Slider -->
+<!-- Video Slider -->
 <div class="video-slider" id="videos">
   <h2>Latest Videos</h2>
   <div class="video-carousel">
     <iframe src="https://www.youtube.com/embed/AyzGPMZOrtY" allowfullscreen></iframe>
     <iframe src="https://www.youtube.com/embed/yMfYrgmmnnc" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/videoid3" allowfullscreen></iframe>
+    <iframe src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbJ7fyuO8Wovaj_3yxhUBfZDl_Gk_vb9XxDg&s" allowfullscreen></iframe>
   </div>
   <button class="youtube-button" onclick="window.open('https://www.youtube.com/@NikaRogachov', '_blank')">
     🎥 Visit My YouTube Channel
@@ -170,23 +170,29 @@
 <style>
   .video-slider {
     text-align: center;
-    padding: 50px 20px;
-    background-color: #f9f9f9;
+    padding: 60px 20px;
+    background-color: #f1f1f1;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
   }
 
   .video-slider h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #222;
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+    color: #333;
+    font-weight: bold;
+    letter-spacing: 1px;
   }
 
   .video-carousel {
     display: flex;
-    gap: 20px;
+    gap: 15px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     padding-bottom: 20px;
     justify-content: center;
+    scroll-behavior: smooth;
   }
 
   .video-carousel iframe {
@@ -195,27 +201,34 @@
     border: none;
     scroll-snap-align: start;
     flex-shrink: 0;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     background: #000;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .video-carousel iframe:hover {
+    transform: scale(1.05);
   }
 
   .youtube-button {
     background-color: #ff0000;
     color: white;
-    padding: 12px 25px;
-    font-size: 1rem;
+    padding: 14px 30px;
+    font-size: 1.1rem;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: background 0.3s ease;
+    margin-top: 20px;
+    transition: background 0.3s ease, transform 0.2s ease;
   }
 
   .youtube-button:hover {
     background-color: #cc0000;
+    transform: scale(1.05);
   }
 
-  /* Optional: Hide scrollbar for cleaner look */
+  /* Hide the scrollbar */
   .video-carousel::-webkit-scrollbar {
     display: none;
   }
@@ -223,7 +236,30 @@
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;     /* Firefox */
   }
+
+  /* Make it responsive */
+  @media (max-width: 768px) {
+    .video-carousel iframe {
+      width: 100%;
+      max-width: 280px;
+      height: 160px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .video-carousel iframe {
+      width: 100%;
+      max-width: 240px;
+      height: 135px;
+    }
+
+    .youtube-button {
+      padding: 12px 20px;
+      font-size: 1rem;
+    }
+  }
 </style>
+
 
 <!-- Blockman GO ID Section -->
 <div class="blockmango-section" id="blockmango">
@@ -349,14 +385,21 @@
     background-color: #000;
     color: #fff;
     text-align: center;
-    padding: 15px 0;
+    padding: 10px 0; /* Reduced padding for a smaller footer */
+    font-size: 12px; /* Smaller font size */
     width: 100%;
-    font-size: 14px;
     z-index: 100;
     display: none; /* Hidden by default */
     position: fixed;
     bottom: 0;
     left: 0;
+    border-top: 1px solid #444; /* Subtle border for better separation */
+  }
+
+  /* Optional: Make the text a bit more subtle */
+  .footer p {
+    margin: 0;
+    opacity: 0.7; /* Slightly faded text for a modern look */
   }
 </style>
 

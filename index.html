@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ishaan-Blockmango</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('https://img.freepik.com/free-vector/blank-brown-notepaper-design-vector_53876-173620.jpg?semt=ais_hybrid&w=740') no-repeat center center fixed;
+      background-size: cover;
+    }
+    nav {
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(6px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 3rem;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      transition: background 0.3s;
+    }
+    nav a:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    .logo {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+      animation: rotate 5s linear infinite;
+    }
+    .logo img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+    }
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .youtube-info, .video-slider, .discord-section, .symbol-section, .blockmango-section {
+      text-align: center;
+      margin: 2rem;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 15px;
+    }
+    .video-slider h2 {
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      color: #d62828;
+    }
+    .video-carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 1rem;
+      padding: 1rem;
+    }
+    .video-carousel iframe {
+      flex: 0 0 auto;
+      width: 360px;
+      height: 200px;
+      border: none;
+      border-radius: 12px;
+      scroll-snap-align: start;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    .youtube-button {
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background-color: #FF0000;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .youtube-button:hover {
+      background-color: #cc0000;
+    }
+    .discord-button {
+      padding: 0.75rem 1.5rem;
+      background-color: #5865F2;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-bottom: 1rem;
+      transition: background 0.3s;
+    }
+    .discord-button:hover {
+      background-color: #4752c4;
+    }
+    .discord-section iframe {
+      width: 100%;
+      max-width: 500px;
+      height: 500px;
+      border-radius: 10px;
+      border: none;
+    }
+    .symbol-box {
+      font-size: 2rem;
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      display: inline-block;
+      cursor: pointer;
+      user-select: all;
+      transition: background 0.3s;
+    }
+    .symbol-box:hover {
+      background: #f0f0f0;
+    }
+    .blockmango-section img {
+      max-width: 300px;
+      height: auto;
+      border-radius: 15px;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#videos">Videos</a>
+    <a href="#discord">Discord</a>
+    <a href="#symbol">Symbol</a>
+  </nav>
+
+  <div class="logo">
+    <img src="https://yt3.googleusercontent.com/sgMNqWe3c2QtjoKv2_Ifr_TSbIfd3YgqXLkFBNz_SUWZrK5mYj1PYI79HzAPNTpJCoizr_91Lg=s160-c-k-c0x00ffffff-no-rj" alt="Logo" />
+  </div>
+
+  <div class="youtube-info">
+    <h2>Ishaan-Blockmango</h2>
+    <p>Subscribers: 21</p>
+    <p>Videos: 2</p>
+  </div>
+
+  <div class="video-slider" id="videos">
+    <h2> Latest Videos </h2>
+    <div class="video-carousel">
+      <iframe src="https://www.youtube.com/embed/AyzGPMZOrtY" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/yMfYrgmmnnc" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/videoid3" allowfullscreen></iframe>
+    </div>
+    <button class="youtube-button" onclick="window.open('https://www.youtube.com/@NikaRogachov', '_blank')">Visit My YouTube Channel</button>
+  </div>
+
+  <div class="blockmango-section" id="blockmango">
+    <h2>Blockman GO ID</h2>
+    <p>My Blockman GO identity badge</p>
+    <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="Blockman GO GIF Placeholder" />
+  </div>
+
+  <div class="discord-section" id="discord">
+    <h2>Join My Discord</h2>
+    <button class="discord-button" onclick="window.open('https://discord.gg/uj2euF2evP')">Join Discord</button>
+ <iframe src="https://discord.com/widget?id=1352489768549744660&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+  </div>
+
+  <div class="symbol-section" id="symbol">
+    <h2>Any Name Symbol</h2>
+    <p>Click the box below for copying it</p>
+    <div class="symbol-box" onclick="navigator.clipboard.writeText(this.textContent)">★彡</div>
+  </div>
+</body>
+</html>

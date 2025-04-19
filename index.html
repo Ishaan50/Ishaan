@@ -313,7 +313,7 @@
     <div class="symbol-box" onclick="navigator.clipboard.writeText(this.textContent)">★彡</div>
   </div>
 <!-- Footer -->
-<footer class="footer">
+<footer class="footer" id="page-footer">
   <p>&copy; 2025 Ishaan. All rights reserved.</p>
 </footer>
 
@@ -323,13 +323,31 @@
     color: #fff;
     text-align: center;
     padding: 15px 0;
-    position: fixed;
     width: 100%;
-    bottom: 0;
     font-size: 14px;
     z-index: 100;
+    display: none; /* Hidden by default */
+    position: fixed;
+    bottom: 0;
+    left: 0;
   }
 </style>
+
+<script>
+  window.addEventListener("scroll", function () {
+    const footer = document.getElementById("page-footer");
+    const scrollY = window.scrollY || window.pageYOffset;
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.body.offsetHeight;
+
+    if (scrollY + windowHeight >= documentHeight - 5) {
+      footer.style.display = "block";
+    } else {
+      footer.style.display = "none";
+    }
+  });
+</script>
+
 
 </body>
 </html>

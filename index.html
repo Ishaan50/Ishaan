@@ -375,11 +375,28 @@
 </style>
 
 
-  <div class="symbol-section" id="symbol">
-    <h2>Any Name Symbol</h2>
-    <p>Click the box below for copying it</p>
-    <div class="symbol-box" onclick="navigator.clipboard.writeText(this.textContent)">؜</div>
-  </div>
+ <style>
+  .symbol-box {
+    background-color: #d4fcd4; /* Light green background */
+    border: 1px solid #a2dba2; /* Soft green border */
+    padding: 10px 20px;
+    display: inline-block;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 24px;
+  }
+
+  .symbol-box:hover {
+    background-color: #c0f5c0; /* Slightly darker green on hover */
+  }
+</style>
+<div class="symbol-section" id="symbol">
+  <h2>Any Name Symbol</h2>
+  <p>Click the box below for copying it</p>
+  <div class="symbol-box" onclick="navigator.clipboard.writeText(this.textContent)">؜</div>
+</div>
+
 <!-- Footer -->
 <footer class="footer" id="page-footer">
   <p>&copy; 2025 Ishaan. All rights reserved.</p>

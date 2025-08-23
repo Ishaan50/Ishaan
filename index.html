@@ -1,445 +1,600 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ishaan-Blockmango</title>
-<link rel="icon" href="Fivcon.jpg" type="image/jpg">
- <!-- Open Graph Meta Tags -->
-<meta property="og:title" content="Ishaan-Blockmango" />
-<meta property="og:description" content="Ishaan Blockmango official Website." />
-<meta property="og:image" content="https://yt3.googleusercontent.com/sgMNqWe3c2QtjoKv2_Ifr_TSbIfd3YgqXLkFBNz_SUWZrK5mYj1PYI79HzAPNTpJCoizr_91Lg=s160-c-k-c0x00ffffff-no-rj" />
-<meta property="og:url" content="https://ishaan50.github.io/Ishaan/" />
-<meta property="og:type" content="website" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ishaan — Blockmango</title>
+  <link rel="icon" href="Fivcon.jpg" type="image/jpg">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Ishaan-Blockmango" />
+  <meta property="og:description" content="Ishaan Blockmango official Website." />
+  <meta property="og:image" content="https://yt3.googleusercontent.com/sgMNqWe3c2QtjoKv2_Ifr_TSbIfd3YgqXLkFBNz_SUWZrK5mYj1PYI79HzAPNTpJCoizr_91Lg=s160-c-k-c0x00ffffff-no-rj" />
+  <meta property="og:url" content="https://ishaan50.github.io/Ishaan/" />
+  <meta property="og:type" content="website" />
+
+  <!-- Google font (only one external resource) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: url('https://img.freepik.com/free-vector/blank-brown-notepaper-design-vector_53876-173620.jpg?semt=ais_hybrid&w=740') no-repeat center center fixed;
-      background-size: cover;
+    :root{
+      --bg-img: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1400&q=60');
+      --glass: rgba(255,255,255,0.06);
+      --glass-2: rgba(255,255,255,0.85);
+      --accent: #FF3B30;         /* youtube red / accent */
+      --accent-2: #5865F2;       /* discord */
+      --muted: #9aa0a6;
+      --card: rgba(255,255,255,0.06);
+      --radius: 14px;
+      color-scheme: light;
     }
-    nav {
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(6px);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 3rem;
-      padding: 1rem 0;
+
+    /* Reset & base */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, rgba(5,6,10,0.9), rgba(5,6,10,0.75)), var(--bg-img) fixed center/cover no-repeat;
+      color: #e9eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding-bottom:120px; /* room for footer */
+    }
+
+    /* Page container */
+    .container{
+      max-width:1200px;
+      margin: 1.25rem auto;
+      padding: 1rem;
+      width: calc(100% - 2rem);
+    }
+
+    /* Top nav */
+    .topbar{
       position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-size: 1.1rem;
-      padding: 0.5rem 1rem;
-      border-radius: 10px;
-      transition: background 0.3s;
-    }
-    nav a:hover {
-      background: rgba(255,255,255,0.2);
-    }
-    .logo {
-      display: flex;
-      justify-content: center;
-      margin-top: 2rem;
-      animation: rotate 5s linear infinite;
-    }
-    .logo img {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-    }
-    @keyframes rotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    .youtube-info, .video-slider, .discord-section, .symbol-section, .blockmango-section {
-      text-align: center;
-      margin: 2rem;
-      padding: 1rem;
-      background: rgba(255, 255, 255, 0.8);
-      border-radius: 15px;
-    }
-    .video-slider h2 {
-      margin-bottom: 1rem;
-      font-size: 2rem;
-      color: #d62828;
-    }
-    .video-carousel {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
+      top: 12px;
+      z-index:999;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
       gap: 1rem;
-      padding: 1rem;
+      padding: 10px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+      backdrop-filter: blur(8px) saturate(1.05);
+      border: 1px solid rgba(255,255,255,0.04);
     }
-    .video-carousel iframe {
-      flex: 0 0 auto;
-      width: 360px;
-      height: 200px;
-      border: none;
-      border-radius: 12px;
-      scroll-snap-align: start;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
     }
-    .youtube-button {
-      margin-top: 1rem;
-      padding: 0.75rem 1.5rem;
-      background-color: #FF0000;
+
+    .brand img{
+      width:48px;height:48px;border-radius:12px;object-fit:cover;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6), inset 0 -2px 6px rgba(0,0,0,0.25);
+      transform: rotate(-8deg);
+    }
+
+    .brand .title{
+      font-weight:800;
+      letter-spacing: -0.02em;
+      font-size:1.05rem;
       color: white;
-      font-weight: bold;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background 0.3s;
     }
-    .youtube-button:hover {
-      background-color: #cc0000;
+
+    nav.primary{
+      display:flex;
+      gap:0.75rem;
+      align-items:center;
     }
-    .discord-button {
-      padding: 0.75rem 1.5rem;
-      background-color: #5865F2;
+    nav.primary a{
+      color:var(--muted);
+      text-decoration:none;
+      padding:8px 12px;
+      border-radius:10px;
+      font-weight:600;
+      transition: all .18s ease;
+    }
+    nav.primary a:hover{ color: white; background: rgba(255,255,255,0.04); transform:translateY(-2px) }
+
+    .actions{ display:flex; gap:10px; align-items:center; }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
       color: white;
-      font-weight: bold;
-      border: none;
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 8px 12px;
       border-radius: 10px;
-      cursor: pointer;
-      margin-bottom: 1rem;
-      transition: background 0.3s;
+      cursor:pointer;
+      font-weight:700;
+      text-decoration:none;
+      transition: transform .15s ease, box-shadow .15s ease;
     }
-    .discord-button:hover {
-      background-color: #4752c4;
+    .btn:active{ transform: translateY(1px) }
+    .btn--accent{ background: linear-gradient(90deg, var(--accent), #ff6b50); box-shadow: 0 6px 30px rgba(255,80,70,0.12); }
+    .btn--discord{ background: linear-gradient(90deg, var(--accent-2), #4c63d6); box-shadow: 0 6px 30px rgba(80,100,230,0.08); }
+
+    /* Hero */
+    .hero{
+      margin-top:1rem;
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:24px;
+      align-items:stretch;
     }
-    .discord-section iframe {
-      width: 100%;
-      max-width: 500px;
-      height: 500px;
-      border-radius: 10px;
-      border: none;
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      border-radius: var(--radius);
+      padding:22px;
+      border: 1px solid rgba(255,255,255,0.04);
+      box-shadow: 0 10px 30px rgba(3,6,12,0.6);
     }
-    .symbol-box {
-      font-size: 2rem;
-      background: white;
-      padding: 1rem;
-      border-radius: 10px;
-      display: inline-block;
-      cursor: pointer;
-      user-select: all;
-      transition: background 0.3s;
+
+    .hero-left h1{
+      margin:0 0 10px 0;
+      font-size:2.2rem;
+      color:white;
+      letter-spacing:-0.02em;
     }
-    .symbol-box:hover {
-      background: #f0f0f0;
+    .hero-left p.lead{
+      margin:0 0 18px 0;
+      color:var(--muted);
+      font-weight:500;
     }
-    .blockmango-section img {
-      max-width: 300px;
-      height: auto;
-      border-radius: 15px;
-      margin-top: 1rem;
+
+    /* quick stats */
+    .stats{
+      display:flex;
+      gap:12px;
+      margin-top:14px;
+      flex-wrap:wrap;
+    }
+    .stat{
+      min-width:120px;
+      flex:1;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:12px;
+      border-radius:12px;
+      text-align:center;
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+    .stat strong{display:block;font-size:1.35rem; color:white}
+    .stat span{display:block;color:var(--muted); font-size:0.9rem; margin-top:6px}
+
+    /* Logo / avatar column */
+    .hero-right{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:flex-start;
+      gap:12px;
+    }
+    .avatar {
+      width:220px;height:220px;border-radius:20px;overflow:hidden;
+      border: 4px solid rgba(255,255,255,0.06);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.65), 0 4px 14px rgba(0,0,0,0.4);
+      background:linear-gradient(135deg, rgba(255,255,255,0.03), rgba(0,0,0,0.15));
+      display:flex;align-items:center;justify-content:center;
+    }
+    .avatar img{width:100%;height:100%;object-fit:cover;transform: rotate(3deg)}
+
+    .subscribe-row{ display:flex; gap:10px; width:100%; justify-content:center; margin-top:8px }
+    .subscribe-row .btn { padding:10px 16px; font-weight:800 }
+
+    /* Sections grid for the rest */
+    .grid{
+      margin-top:22px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:18px;
+    }
+
+    /* Video carousel card */
+    .video-card h2{
+      margin:0 0 10px 0;
+      font-size:1.25rem;
+      color:white;
+    }
+    .carousel{
+      display:flex;
+      gap:12px;
+      overflow-x:auto;
+      padding:10px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling:touch;
+    }
+    .carousel .thumb{
+      min-width:260px;
+      height:150px;
+      border-radius:12px;
+      overflow:hidden;
+      flex-shrink:0;
+      background:#000;
+      position:relative;
+      scroll-snap-align:start;
+      box-shadow: 0 10px 30px rgba(2,6,12,0.6);
+      cursor:pointer;
+      border:1px solid rgba(255,255,255,0.03);
+      transform: translateZ(0);
+      transition: transform .18s ease;
+    }
+    .carousel .thumb:hover{ transform: translateY(-6px) scale(1.02) }
+    .thumb img{ width:100%; height:100%; object-fit:cover; display:block }
+    .thumb .label{
+      position:absolute;left:10px;bottom:10px;
+      background:rgba(0,0,0,0.5);
+      padding:6px 8px;border-radius:8px;font-weight:700;font-size:0.9rem;color:#fff;
+    }
+    .carousel::-webkit-scrollbar{ display:none }
+
+    /* Discord card */
+    .discord-card iframe{
+      width:100%;
+      height:380px;
+      border-radius:10px;
+      border:none;
+      display:block;
+    }
+
+    /* Blockmango / video */
+    .video-responsive{
+      width:100%;
+      max-width:420px;
+      margin:0 auto;
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.6);
+      border:1px solid rgba(255,255,255,0.04);
+    }
+    .video-responsive video{
+      width:100%;height:auto;display:block;background:#000;
+    }
+
+    /* Symbol / copy */
+    .symbol{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:16px;
+      flex-direction:column;
+      padding:24px;
+    }
+    .symbol .symbol-box{
+      font-size:2.2rem;
+      background: linear-gradient(180deg,#fff 3%, rgba(255,255,255,0.06) 30%);
+      color:#0a0a0a;
+      padding:12px 20px;
+      border-radius:10px;
+      cursor:pointer;
+      user-select:none;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+      border:1px solid rgba(0,0,0,0.06);
+    }
+    .hint{ color:var(--muted); font-size:0.95rem; margin-top:6px }
+
+    /* Footer */
+    footer.site-footer{
+      position:fixed;
+      left:0;right:0;bottom:0;
+      display:flex;align-items:center;justify-content:center;
+      padding:14px 16px;background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.6));
+      color:var(--muted); font-size:0.93rem;
+      border-top:1px solid rgba(255,255,255,0.02);
+      z-index:999;
+    }
+
+    /* modal (lightbox) */
+    .modal-backdrop{
+      position:fixed;inset:0;background:rgba(0,0,0,0.75);display:none;align-items:center;justify-content:center;z-index:1200;
+    }
+    .modal{
+      width: min(900px, 95%);
+      border-radius:10px;
+      overflow:hidden;
+      background: #000;
+      box-shadow:0 30px 80px rgba(0,0,0,0.8);
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+    .modal iframe, .modal video{
+      width:100%;height:520px;border: none;background:#000;display:block;
+    }
+    .modal .close{
+      position:absolute;right:18px;top:12px;background:rgba(255,255,255,0.06);border:none;color:white;padding:8px 10px;border-radius:8px;cursor:pointer;
+    }
+
+    /* Responsive */
+    @media (max-width: 1000px){
+      .hero{ grid-template-columns: 1fr; }
+      .grid{ grid-template-columns: repeat(2,1fr) }
+      .carousel .thumb{ min-width:220px }
+    }
+    @media (max-width:680px){
+      nav.primary{ display:none } /* hide nav on very small */
+      .grid{ grid-template-columns: 1fr }
+      .carousel .thumb{ min-width:180px; height:120px }
+      .modal iframe, .modal video{ height:320px }
+      .hero-left h1{ font-size:1.5rem }
+    }
+
+    /* small micro-animations */
+    .pulse {
+      animation: pulse 2.4s infinite;
+      box-shadow: 0 8px 28px rgba(255,59,48,0.12);
+    }
+    @keyframes pulse {
+      0% { transform: translateY(0) scale(1) }
+      50% { transform: translateY(-4px) scale(1.01) }
+      100% { transform: translateY(0) scale(1) }
     }
   </style>
 </head>
 <body>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#videos">Videos</a>
-    <a href="#discord">Discord</a>
-    <a href="#symbol">Symbol</a>
-  </nav>
+  <div class="container">
+    <header class="topbar" role="banner" aria-label="Top navigation">
+      <div class="brand" title="Ishaan - Blockmango">
+        <img src="https://yt3.googleusercontent.com/sgMNqWe3c2QtjoKv2_Ifr_TSbIfd3YgqXLkFBNz_SUWZrK5mYj1PYI79HzAPNTpJCoizr_91Lg=s160-c-k-c0x00ffffff-no-rj" alt="Ishaan logo" />
+        <div>
+          <div class="title">Ishaan — Blockmango</div>
+          <div style="font-size:12px;color:var(--muted)">Gaming • Videos • Community</div>
+        </div>
+      </div>
 
-  <div class="logo">
-    <img src="https://yt3.googleusercontent.com/sgMNqWe3c2QtjoKv2_Ifr_TSbIfd3YgqXLkFBNz_SUWZrK5mYj1PYI79HzAPNTpJCoizr_91Lg=s160-c-k-c0x00ffffff-no-rj" alt="Logo" />
+      <nav class="primary" role="navigation" aria-label="Primary">
+        <a href="#videos">Videos</a>
+        <a href="#discord">Discord</a>
+        <a href="#symbol">Symbol</a>
+        <a href="#blockmango">Blockman GO</a>
+      </nav>
+
+      <div class="actions">
+        <a class="btn btn--accent" href="https://www.youtube.com/@Ishaan-Blockmango" target="_blank" rel="noopener">🎥 Subscribe</a>
+        <button class="btn btn--discord" id="join-discord">💬 Join</button>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Intro">
+      <div class="card hero-left">
+        <h1>Welcome to Ishaan — Blockmango</h1>
+        <p class="lead">Creator of gameplay clips, community events, and Blockman GO identity highlights. Join the Discord for giveaways and live chat.</p>
+
+        <div class="stats" aria-hidden="false">
+          <div class="stat">
+            <strong id="subs-counter">21</strong>
+            <span>Subscribers</span>
+          </div>
+          <div class="stat">
+            <strong id="videos-counter">2</strong>
+            <span>Videos</span>
+          </div>
+          <div class="stat">
+            <strong id="members-counter">—</strong>
+            <span>Discord Members</span>
+          </div>
+        </div>
+
+        <div style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap">
+          <a class="btn btn--accent pulse" href="https://www.youtube.com/@Ishaan-Blockmango" target="_blank" rel="noopener">Watch Channel</a>
+          <button class="btn" id="open-playlist">Latest Videos</button>
+          <a class="btn" href="#discord">Open Discord</a>
+        </div>
+      </div>
+
+      <aside class="card hero-right" aria-label="Profile">
+        <div class="avatar" aria-hidden="true">
+          <img src="https://yt3.googleusercontent.com/sgMNqWe3c2QtjoKv2_Ifr_TSbIfd3YgqXLkFBNz_SUWZrK5mYj1PYI79HzAPNTpJCoizr_91Lg=s160-c-k-c0x00ffffff-no-rj" alt="Ishaan avatar" loading="lazy" />
+        </div>
+
+        <div style="width:100%; text-align:center">
+          <div class="subscribe-row">
+            <a class="btn btn--accent" href="https://www.youtube.com/@Ishaan-Blockmango" target="_blank" rel="noopener">Subscribe</a>
+            <a class="btn btn--discord" href="https://discord.gg/uj2euF2evP" target="_blank" rel="noopener">Join Discord</a>
+          </div>
+          <div style="margin-top:12px; color:var(--muted); font-size:0.95rem;">Pro tip: click thumbnails to play in a lightbox.</div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- GRID: Videos, Discord, Symbol -->
+    <section class="grid" aria-label="Main content">
+
+      <!-- Videos -->
+      <article class="card video-card" id="videos">
+        <h2>Latest Videos</h2>
+        <div class="carousel" id="carousel" aria-label="Video carousel">
+          <!-- Thumbnails open lightbox -->
+          <div class="thumb" data-src="https://www.youtube.com/embed/AyzGPMZOrtY" tabindex="0" role="button" aria-pressed="false">
+            <img alt="Video 1" src="https://i.ytimg.com/vi/AyzGPMZOrtY/hqdefault.jpg" loading="lazy"/>
+            <div class="label">Cool Clip 1</div>
+          </div>
+
+          <div class="thumb" data-src="https://www.youtube.com/embed/yMfYrgmmnnc" tabindex="0" role="button" aria-pressed="false">
+            <img alt="Video 2" src="https://i.ytimg.com/vi/yMfYrgmmnnc/hqdefault.jpg" loading="lazy"/>
+            <div class="label">Highlight 2</div>
+          </div>
+
+          <!-- example static image turned into clickable card -->
+          <div class="thumb" data-src="https://www.youtube.com/embed/AyzGPMZOrtY" tabindex="0" role="button" aria-pressed="false">
+            <img alt="Thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbJ7fyuO8Wovaj_3yxhUBfZDl_Gk_vb9XxDg&s" loading="lazy"/>
+            <div class="label">Snapshot</div>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- Discord -->
+      <article class="card discord-card" id="discord" aria-labelledby="discord-title">
+        <h2 id="discord-title">Join the Discord</h2>
+        <p style="color:var(--muted); margin-top:6px">Chat with the community, get updates, and join events.</p>
+        <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+          <a class="btn btn--discord" href="https://discord.gg/uj2euF2evP" target="_blank" rel="noopener">Open Invite</a>
+          <button class="btn" id="discord-count-btn">Grab Invite</button>
+        </div>
+
+        <div style="margin-top:14px;">
+          <div style="max-width:640px;margin:16px auto" class="discord-widget-wrapper">
+            <iframe 
+              src="https://discord.com/widget?id=1352489768549744660&theme=dark"
+              loading="lazy"
+              title="Discord widget"
+              sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+            </iframe>
+          </div>
+        </div>
+      </article>
+
+      <!-- Symbol -->
+      <article class="card symbol" id="symbol" aria-labelledby="symbol-title">
+        <h2 id="symbol-title">Any Name Symbol</h2>
+        <p class="hint">Click or press Enter to copy the symbol. Works on desktop & mobile.</p>
+        <div>
+          <button class="symbol-box" id="symbolBox" aria-label="Copy symbol" title="Click to copy">؜</button>
+          <div id="copyHint" style="margin-top:8px;color:var(--muted);font-size:0.9rem">Click to copy</div>
+        </div>
+      </article>
+
+      <!-- Blockmango / ID -->
+      <article class="card" id="blockmango" aria-labelledby="blockmango-title">
+        <h2 id="blockmango-title">Blockman GO ID</h2>
+        <p style="color:var(--muted)">Identity badge & short clip</p>
+        <div class="video-responsive" style="margin-top:12px">
+          <video class="blockmango-video" autoplay loop muted playsinline controls>
+            <source src="BlockmangoId.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </article>
+
+      <!-- Extra card — about or contact -->
+      <article class="card" aria-labelledby="about-title">
+        <h2 id="about-title">About</h2>
+        <p style="color:var(--muted)">This page is your hub — use it to share clips, run community events, and promote your channel. The design prioritizes accessibility, mobile responsiveness, and smooth interactions.</p>
+        <div style="margin-top:12px; display:flex; gap:8px;">
+          <a class="btn" href="mailto:ishaan@example.com">Contact</a>
+          <a class="btn" href="https://ishaan50.github.io/Ishaan/" target="_blank" rel="noopener">GitHub Page</a>
+        </div>
+      </article>
+
+    </section>
   </div>
 
-  <div class="youtube-info">
-    <h2>Ishaan-Blockmango</h2>
-    <p>Subscribers: 21</p>
-    <p>Videos: 2</p>
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div style="max-width:1200px; width:100%; padding:0 12px; display:flex; justify-content:space-between; align-items:center">
+      <div>&copy; 2025 Ishaan. All rights reserved.</div>
+      <div style="color:var(--muted)"><small>Made with ♥ • Blockmango ID • Keep creating</small></div>
+    </div>
+  </footer>
+
+  <!-- modal / lightbox -->
+  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal" role="document">
+      <button class="close" id="closeModal" aria-label="Close video">✕</button>
+      <div id="modalInner"></div>
+    </div>
   </div>
 
-<!-- Video Slider -->
-<div class="video-slider" id="videos">
-  <h2>Latest Videos</h2>
-  <div class="video-carousel">
-    <iframe src="https://www.youtube.com/embed/AyzGPMZOrtY" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/yMfYrgmmnnc" allowfullscreen></iframe>
-    <iframe src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbJ7fyuO8Wovaj_3yxhUBfZDl_Gk_vb9XxDg&s" allowfullscreen></iframe>
-  </div>
-  <button class="youtube-button" onclick="window.open('https://www.youtube.com/@Ishaan-Blockmango', '_blank')">
-    🎥 Visit My YouTube Channel
-  </button>
-</div>
+  <script>
+    // Helper: open external links safely
+    document.querySelectorAll('a[target="_blank"]').forEach(a=>{
+      a.rel = a.rel ? a.rel + ' noopener noreferrer' : 'noopener noreferrer';
+    });
 
-<style>
-  .video-slider {
-    text-align: center;
-    padding: 60px 20px;
-    background-color: #f1f1f1;
-    margin-bottom: 50px;
-    border-radius: 10px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  }
-
-  .video-slider h2 {
-    font-size: 2.5rem;
-    margin-bottom: 25px;
-    color: #333;
-    font-weight: bold;
-    letter-spacing: 1px;
-  }
-
-  .video-carousel {
-    display: flex;
-    gap: 15px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 20px;
-    justify-content: center;
-    scroll-behavior: smooth;
-  }
-
-  .video-carousel iframe {
-    width: 320px;
-    height: 180px;
-    border: none;
-    scroll-snap-align: start;
-    flex-shrink: 0;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    background: #000;
-    transition: transform 0.3s ease-in-out;
-  }
-
-  .video-carousel iframe:hover {
-    transform: scale(1.05);
-  }
-
-  .youtube-button {
-    background-color: #ff0000;
-    color: white;
-    padding: 14px 30px;
-    font-size: 1.1rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background 0.3s ease, transform 0.2s ease;
-  }
-
-  .youtube-button:hover {
-    background-color: #cc0000;
-    transform: scale(1.05);
-  }
-
-  /* Hide the scrollbar */
-  .video-carousel::-webkit-scrollbar {
-    display: none;
-  }
-  .video-carousel {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;     /* Firefox */
-  }
-
-  /* Make it responsive */
-  @media (max-width: 768px) {
-    .video-carousel iframe {
-      width: 100%;
-      max-width: 280px;
-      height: 160px;
+    // Carousel -> open video in modal
+    const modal = document.getElementById('modalBackdrop');
+    const modalInner = document.getElementById('modalInner');
+    function openModalWith(src){
+      modalInner.innerHTML = '<iframe src="'+src+'?autoplay=1" title="Video player" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+      // focus trap (basic)
+      setTimeout(()=>document.getElementById('closeModal').focus(),120);
     }
-  }
-
-  @media (max-width: 480px) {
-    .video-carousel iframe {
-      width: 100%;
-      max-width: 240px;
-      height: 135px;
+    function closeModal(){
+      modalInner.innerHTML = '';
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
     }
 
-    .youtube-button {
-      padding: 12px 20px;
-      font-size: 1rem;
+    document.getElementById('closeModal').addEventListener('click', closeModal);
+    modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal() });
+
+    // Thumbnails clickable + keyboard support
+    document.querySelectorAll('.thumb').forEach(t=>{
+      t.addEventListener('click', ()=> openModalWith(t.dataset.src));
+      t.addEventListener('keydown', (ev)=>{ if(ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); openModalWith(t.dataset.src) }});
+    });
+
+    // Copy symbol + feedback
+    const symbolBox = document.getElementById('symbolBox');
+    const copyHint = document.getElementById('copyHint');
+    symbolBox.addEventListener('click', async ()=>{
+      try{
+        await navigator.clipboard.writeText(symbolBox.textContent.trim());
+        copyHint.textContent = 'Copied ✓';
+        setTimeout(()=> copyHint.textContent = 'Click to copy', 2200);
+      }catch(e){
+        copyHint.textContent = 'Press Ctrl+C to copy';
+      }
+    });
+
+    // Open discord button that also focuses widget
+    document.getElementById('join-discord').addEventListener('click', ()=> {
+      window.open('https://discord.gg/uj2euF2evP', '_blank', 'noopener');
+    });
+
+    // Animated counters (simple)
+    function animateCounter(id, target, duration=900){
+      const el = document.getElementById(id);
+      if(!el) return;
+      let start = 0;
+      const step = Math.max(1, Math.floor(target / (duration / 16)));
+      function tick(){
+        start += step;
+        if(start >= target){ el.textContent = target; return; }
+        el.textContent = start;
+        requestAnimationFrame(tick);
+      }
+      tick();
     }
-  }
-</style>
+    // Use real subscribers/videos if you have API — for now we use provided values
+    animateCounter('subs-counter', 21, 800);
+    animateCounter('videos-counter', 2, 600);
 
+    // Optionally try to fetch discord widget count via CORS-free route (not available here)
+    // Fallback: show a dash or later update if you want to use a server-side call.
 
-<!-- Blockman GO ID Section -->
-<div class="blockmango-section" id="blockmango">
-  <h2>Blockman GO ID</h2>
-  <p>My Blockman GO identity badge</p>
-  <video class="blockmango-video" autoplay loop muted playsinline>
-    <source src="BlockmangoId.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</div>
+    // Smooth scroll for internal anchors
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const id = a.getAttribute('href');
+        if(id.length > 1){
+          e.preventDefault();
+          const el = document.querySelector(id);
+          if(el) el.scrollIntoView({behavior:'smooth', block:'center'});
+        }
+      });
+    });
 
-<style>
-  .blockmango-video {
-    width: 100%; /* Makes the video responsive */
-    max-width: 320px; /* Restricts the maximum width */
-    height: auto; /* Automatically adjusts height to maintain aspect ratio */
-    pointer-events: none; /* disables mouse interactions */
-    border-radius: 8px;
-    object-fit: contain; /* Ensures the full video is visible without cropping */
-    background: #000;
-  }
-</style>
-
-
-<!-- Discord Section -->
-<div class="discord-section" id="discord">
-  <h2>Join My Discord</h2>
-  <button class="discord-button" onclick="window.open('https://discord.gg/uj2euF2evP', '_blank')">
-    💬 Join Discord
-  </button>
-  <div class="discord-widget-wrapper">
-    <iframe 
-      src="https://discord.com/widget?id=1352489768549744660&theme=dark" 
-      width="100%" 
-      height="500" 
-      allowtransparency="true" 
-      frameborder="0" 
-      sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
-    </iframe>
-  </div>
-</div>
-
-<style>
-  .discord-section {
-    text-align: center;
-    padding: 50px 20px;
-    background-color: #2c2f33;
-    color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    margin-bottom: 50px;
-  }
-
-  .discord-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    font-weight: bold;
-    letter-spacing: 1px;
-  }
-
-  .discord-button {
-    background-color: #5865F2;
-    color: white;
-    padding: 14px 30px;
-    font-size: 1.2rem;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-bottom: 30px;
-    transition: background 0.3s ease, transform 0.3s ease;
-  }
-
-  .discord-button:hover {
-    background-color: #4752C4;
-    transform: scale(1.05);
-  }
-
-  .discord-widget-wrapper {
-    max-width: 100%;
-    width: 600px;
-    margin: 0 auto;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    border-radius: 10px;
-    overflow: hidden;
-  }
-
-  .discord-widget-wrapper iframe {
-    width: 100%;
-    height: 500px;
-    border: none;
-  }
-
-  /* Make the widget responsive */
-  @media (max-width: 768px) {
-    .discord-widget-wrapper {
-      width: 90%;
-    }
-    .discord-button {
-      width: 80%;
-      padding: 12px 24px;
-    }
-  }
-
-  /* Optional: Style the button when clicked */
-  .discord-button:active {
-    transform: scale(0.98);
-  }
-</style>
-
-
- <style>
-  .symbol-box {
-    background-color: #d4fcd4; /* Light green background */
-    border: 1px solid #a2dba2; /* Soft green border */
-    padding: 10px 20px;
-    display: inline-block;
-    margin-top: 10px;
-    cursor: pointer;
-    border-radius: 8px;
-    font-size: 24px;
-  }
-
-  .symbol-box:hover {
-    background-color: #c0f5c0; /* Slightly darker green on hover */
-  }
-</style>
-<div class="symbol-section" id="symbol">
-  <h2>Any Name Symbol</h2>
-  <p>Click the box below for copying it</p>
-  <div class="symbol-box" onclick="navigator.clipboard.writeText(this.textContent)">؜</div>
-</div>
-
-<!-- Footer -->
-<footer class="footer" id="page-footer">
-  <p>&copy; 2025 Ishaan. All rights reserved.</p>
-</footer>
-
-<style>
-  .footer {
-    background-color: #000;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0; /* Reduced padding for a smaller footer */
-    font-size: 12px; /* Smaller font size */
-    width: 100%;
-    z-index: 100;
-    display: none; /* Hidden by default */
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    border-top: 1px solid #444; /* Subtle border for better separation */
-  }
-
-  /* Optional: Make the text a bit more subtle */
-  .footer p {
-    margin: 0;
-    opacity: 0.7; /* Slightly faded text for a modern look */
-  }
-</style>
-
-<script>
-  window.addEventListener("scroll", function () {
-    const footer = document.getElementById("page-footer");
-    const scrollY = window.scrollY || window.pageYOffset;
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.body.offsetHeight;
-
-    if (scrollY + windowHeight >= documentHeight - 5) {
-      footer.style.display = "block";
-    } else {
-      footer.style.display = "none";
-    }
-  });
-</script>
-
-
+    // Small accessibility: trap focus while modal is open (lightweight)
+    document.addEventListener('focusin', (e)=> {
+      if(modal.style.display === 'flex' && !modal.contains(e.target)){
+        e.stopPropagation();
+        modal.querySelector('.close').focus();
+      }
+    });
+  </script>
 </body>
 </html>

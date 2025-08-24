@@ -1,364 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- ---
+    Ishaan – Personal Profile Site (guns.lol inspired)
+    Single-file, lightweight, no build step. Drop into any static host.
+
+    How to customize:
+    1) Change the CONFIG object below (name, bio, colors, images, socials).
+    2) Replace the placeholder images/links.
+    3) Optional: swap Google Font to anything you like.
+  --- -->
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Ishaan — Blockmango</title>
-  <link rel="icon" href="Fivcon.jpg" type="image/jpg">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Ishaan-Blockmango" />
-  <meta property="og:description" content="Ishaan Blockmango official Website." />
-  <meta property="og:image" content="https://yt3.googleusercontent.com/sgMNqWe3c2QtjoKv2_Ifr_TSbIfd3YgqXLkFBNz_SUWZrK5mYj1PYI79HzAPNTpJCoizr_91Lg=s160-c-k-c0x00ffffff-no-rj" />
-  <meta property="og:url" content="https://ishaan50.github.io/Ishaan/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>@Ishaan | links</title>
+  <meta name="description" content="Hello I am Ishaan, I am a Full‑Stack Developer and a YouTuber!" />
+  <meta name="theme-color" content="#6bff97" />
+  <meta name="author" content="@Ishaan" />
+  <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website" />
+  <meta property="og:title" content="@Ishaan | links" />
+  <meta property="og:description" content="Hello I am Ishaan, I am a Full‑Stack Developer and a YouTuber!" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=2400&auto=format&fit=crop" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Google font (only one external resource) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
 
   <style>
     :root{
-      --bg-img: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1400&q=60');
-      --glass: rgba(255,255,255,0.06);
-      --glass-2: rgba(255,255,255,0.85);
-      --accent: #FF3B30;         /* youtube red / accent */
-      --accent-2: #5865F2;       /* discord */
-      --muted: #9aa0a6;
-      --card: rgba(255,255,255,0.06);
-      --radius: 14px;
-      color-scheme: light;
+      /* Customize your palette */
+      --bg: #080808;                 /* page background */
+      --primary: #6bff97;            /* accent + text glow */
+      --primary-soft: rgba(107,255,151,.08);
+      --primary-border: rgba(107,255,151,.14);
+      --text: #e8ffeF;               /* body text */
+      --muted: rgba(107,255,151,.55);/* muted text */
+      --danger: #ff3b3b;             /* icon color */
+      --glass: rgba(0,0,0,.5);       /* card bg */
+      --radius: 20px;                /* card rounding */
+      --blur: 12px;                  /* card blur */
     }
-
-    /* Reset & base */
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0;
-      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, "Helvetica Neue", Arial;
-      background: linear-gradient(180deg, rgba(5,6,10,0.9), rgba(5,6,10,0.75)), var(--bg-img) fixed center/cover no-repeat;
-      color: #e9eef6;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;
-      padding-bottom:120px; /* room for footer */
+      margin:0; font-family: 'Outfit', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x:hidden;
     }
 
-    /* Page container */
-    .container{
-      max-width:1200px;
-      margin: 1.25rem auto;
-      padding: 1rem;
-      width: calc(100% - 2rem);
+    /* Background image + vignette */
+    .bg{
+      position:fixed; inset:0; z-index:-2; background-position:center; background-size:cover; background-repeat:no-repeat;
+      transform: scale(1.02);
+      filter: saturate(1.05) contrast(1.05) brightness(.9);
+    }
+    .vignette{
+      position:fixed; inset:0; z-index:-1; pointer-events:none;
+      background: radial-gradient(1200px 600px at 50% 10%, transparent 10%, rgba(0,0,0,.55) 60%, rgba(0,0,0,.85) 100%);
     }
 
-    /* Top nav */
-    .topbar{
-      position: sticky;
-      top: 12px;
-      z-index:999;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 1rem;
-      padding: 10px;
-      border-radius: 14px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
-      backdrop-filter: blur(8px) saturate(1.05);
-      border: 1px solid rgba(255,255,255,0.04);
-    }
+    /* Subtle animated stars (night effect) */
+    .stars, .stars:after{ position:fixed; inset:0; background: transparent url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="2" height="2"><circle cx="1" cy="1" r="1" fill="white"/></svg>') repeat; opacity:.15; animation: drift 100s linear infinite; mix-blend-mode: screen;}
+    .stars:after{ content:""; opacity:.08; animation-duration: 180s; transform: scale(1.5);}
+    @keyframes drift{ from{transform: translateY(0)} to{transform: translateY(-800px)} }
 
-    .brand{
-      display:flex;
-      gap:12px;
-      align-items:center;
-    }
+    /* Selection color */
+    ::selection{ background: var(--primary); color:#08150c }
 
-    .brand img{
-      width:48px;height:48px;border-radius:12px;object-fit:cover;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.6), inset 0 -2px 6px rgba(0,0,0,0.25);
-      transform: rotate(-8deg);
-    }
-
-    .brand .title{
-      font-weight:800;
-      letter-spacing: -0.02em;
-      font-size:1.05rem;
-      color: white;
-    }
-
-    nav.primary{
-      display:flex;
-      gap:0.75rem;
-      align-items:center;
-    }
-    nav.primary a{
-      color:var(--muted);
-      text-decoration:none;
-      padding:8px 12px;
-      border-radius:10px;
-      font-weight:600;
-      transition: all .18s ease;
-    }
-    nav.primary a:hover{ color: white; background: rgba(255,255,255,0.04); transform:translateY(-2px) }
-
-    .actions{ display:flex; gap:10px; align-items:center; }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-      color: white;
-      border: 1px solid rgba(255,255,255,0.06);
-      padding: 8px 12px;
-      border-radius: 10px;
-      cursor:pointer;
-      font-weight:700;
-      text-decoration:none;
-      transition: transform .15s ease, box-shadow .15s ease;
-    }
-    .btn:active{ transform: translateY(1px) }
-    .btn--accent{ background: linear-gradient(90deg, var(--accent), #ff6b50); box-shadow: 0 6px 30px rgba(255,80,70,0.12); }
-    .btn--discord{ background: linear-gradient(90deg, var(--accent-2), #4c63d6); box-shadow: 0 6px 30px rgba(80,100,230,0.08); }
-
-    /* Hero */
-    .hero{
-      margin-top:1rem;
-      display:grid;
-      grid-template-columns: 1fr 420px;
-      gap:24px;
-      align-items:stretch;
-    }
+    /* Layout */
+    .wrap{ display:grid; place-items:center; min-height:100svh; padding:30px 16px; }
 
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
-      border-radius: var(--radius);
-      padding:22px;
-      border: 1px solid rgba(255,255,255,0.04);
-      box-shadow: 0 10px 30px rgba(3,6,12,0.6);
+      width:min(760px, 92vw); border-radius: var(--radius); backdrop-filter: blur(var(--blur));
+      background: linear-gradient(180deg, rgba(0,0,0,.35), var(--glass));
+      border: 2px solid rgba(107,255,151,.08);
+      box-shadow: 0 0 0 1px rgba(255,255,255,.02) inset, 0 15px 60px rgba(0,0,0,.6), 0 0 40px rgba(107,255,151,.08);
+      padding: clamp(20px, 4.5vw, 40px);
     }
 
-    .hero-left h1{
-      margin:0 0 10px 0;
-      font-size:2.2rem;
-      color:white;
-      letter-spacing:-0.02em;
+    .profile{ display:grid; grid-template-columns: 120px 1fr; gap:16px; align-items:center; }
+    .avatar{
+      width:120px; height:120px; border-radius: 32px; overflow:hidden; border:2px solid rgba(0,0,0,.4);
+      box-shadow: 0 0 0 2px rgba(255,255,255,.08) inset, 0 0 30px rgba(107,255,151,.18);
     }
-    .hero-left p.lead{
-      margin:0 0 18px 0;
-      color:var(--muted);
-      font-weight:500;
-    }
+    .avatar img{ width:100%; height:100%; object-fit:cover; display:block }
+    .name{ font-size: clamp(28px, 4.2vw, 40px); margin:0; font-weight:700; letter-spacing:.5px; color: var(--primary); text-shadow: 0 0 16px var(--primary); }
+    .bio{ margin:.35rem 0 0; font-size: clamp(14px, 2vw, 18px); color: var(--muted); font-weight:500; }
 
-    /* quick stats */
-    .stats{
-      display:flex;
-      gap:12px;
-      margin-top:14px;
-      flex-wrap:wrap;
+    .meta{ display:flex; gap:10px; align-items:center; margin-top:10px; flex-wrap:wrap; }
+    .chip{
+      font-size: 14px; color: var(--muted); display:inline-flex; align-items:center; gap:8px; padding:8px 12px;
+      background: var(--primary-soft); border: 2px solid var(--primary-border); border-radius: 999px;
     }
-    .stat{
-      min-width:120px;
-      flex:1;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      padding:12px;
-      border-radius:12px;
-      text-align:center;
-      border: 1px solid rgba(255,255,255,0.03);
-    }
-    .stat strong{display:block;font-size:1.35rem; color:white}
-    .stat span{display:block;color:var(--muted); font-size:0.9rem; margin-top:6px}
+    .chip svg{ filter: drop-shadow(0 0 8px var(--primary)); color: var(--danger); }
 
-    /* Logo / avatar column */
-    .hero-right{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:flex-start;
-      gap:12px;
+    .links{ display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:12px; margin-top:22px; }
+    .btn{
+      --bg: rgba(107,255,151,.20);
+      --bgH: rgba(107,255,151,.30);
+      display:flex; align-items:center; justify-content:center; gap:10px;
+      padding:14px 16px; border-radius: 14px; text-decoration:none; color: var(--text); font-weight:600; letter-spacing:.2px;
+      background: var(--bg); border:2px solid var(--primary-border); transition:.18s ease;
+      box-shadow: 0 6px 24px rgba(107,255,151,.12);
     }
-    .avatar {
-      width:220px;height:220px;border-radius:20px;overflow:hidden;
-      border: 4px solid rgba(255,255,255,0.06);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.65), 0 4px 14px rgba(0,0,0,0.4);
-      background:linear-gradient(135deg, rgba(255,255,255,0.03), rgba(0,0,0,0.15));
-      display:flex;align-items:center;justify-content:center;
-    }
-    .avatar img{width:100%;height:100%;object-fit:cover;transform: rotate(3deg)}
+    .btn:hover{ background: var(--bgH); border-color: rgba(107,255,151,.25); transform: translateY(-1px); box-shadow: 0 10px 30px rgba(107,255,151,.16); }
+    .btn svg{ width:20px; height:20px }
 
-    .subscribe-row{ display:flex; gap:10px; width:100%; justify-content:center; margin-top:8px }
-    .subscribe-row .btn { padding:10px 16px; font-weight:800 }
+    .divider{ height:1px; background: linear-gradient(90deg, transparent, rgba(107,255,151,.18), transparent); margin: 20px 0; }
 
-    /* Sections grid for the rest */
-    .grid{
-      margin-top:22px;
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:18px;
-    }
-
-    /* Video carousel card */
-    .video-card h2{
-      margin:0 0 10px 0;
-      font-size:1.25rem;
-      color:white;
-    }
-    .carousel{
-      display:flex;
-      gap:12px;
-      overflow-x:auto;
-      padding:10px;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling:touch;
-    }
-    .carousel .thumb{
-      min-width:260px;
-      height:150px;
-      border-radius:12px;
-      overflow:hidden;
-      flex-shrink:0;
-      background:#000;
-      position:relative;
-      scroll-snap-align:start;
-      box-shadow: 0 10px 30px rgba(2,6,12,0.6);
-      cursor:pointer;
-      border:1px solid rgba(255,255,255,0.03);
-      transform: translateZ(0);
-      transition: transform .18s ease;
-    }
-    .carousel .thumb:hover{ transform: translateY(-6px) scale(1.02) }
-    .thumb img{ width:100%; height:100%; object-fit:cover; display:block }
-    .thumb .label{
-      position:absolute;left:10px;bottom:10px;
-      background:rgba(0,0,0,0.5);
-      padding:6px 8px;border-radius:8px;font-weight:700;font-size:0.9rem;color:#fff;
-    }
-    .carousel::-webkit-scrollbar{ display:none }
-
-    /* Discord card */
-    .discord-card iframe{
-      width:100%;
-      height:380px;
-      border-radius:10px;
-      border:none;
-      display:block;
-    }
-
-    /* Blockmango / video */
-    .video-responsive{
-      width:100%;
-      max-width:420px;
-      margin:0 auto;
-      border-radius:12px;
-      overflow:hidden;
-      box-shadow: 0 18px 50px rgba(0,0,0,0.6);
-      border:1px solid rgba(255,255,255,0.04);
-    }
-    .video-responsive video{
-      width:100%;height:auto;display:block;background:#000;
-    }
-
-    /* Symbol / copy */
-    .symbol{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:16px;
-      flex-direction:column;
-      padding:24px;
-    }
-    .symbol .symbol-box{
-      font-size:2.2rem;
-      background: linear-gradient(180deg,#fff 3%, rgba(255,255,255,0.06) 30%);
-      color:#0a0a0a;
-      padding:12px 20px;
-      border-radius:10px;
-      cursor:pointer;
-      user-select:none;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
-      border:1px solid rgba(0,0,0,0.06);
-    }
-    .hint{ color:var(--muted); font-size:0.95rem; margin-top:6px }
-
-    /* Footer */
-    footer.site-footer{
-      position:fixed;
-      left:0;right:0;bottom:0;
-      display:flex;align-items:center;justify-content:center;
-      padding:14px 16px;background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.6));
-      color:var(--muted); font-size:0.93rem;
-      border-top:1px solid rgba(255,255,255,0.02);
-      z-index:999;
-    }
-
-    /* modal (lightbox) */
-    .modal-backdrop{
-      position:fixed;inset:0;background:rgba(0,0,0,0.75);display:none;align-items:center;justify-content:center;z-index:1200;
-    }
-    .modal{
-      width: min(900px, 95%);
-      border-radius:10px;
-      overflow:hidden;
-      background: #000;
-      box-shadow:0 30px 80px rgba(0,0,0,0.8);
-      border: 1px solid rgba(255,255,255,0.03);
-    }
-    .modal iframe, .modal video{
-      width:100%;height:520px;border: none;background:#000;display:block;
-    }
-    .modal .close{
-      position:absolute;right:18px;top:12px;background:rgba(255,255,255,0.06);border:none;color:white;padding:8px 10px;border-radius:8px;cursor:pointer;
-    }
+    .footer{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; opacity:.75; font-size:13px }
+    .views{ display:flex; align-items:center; gap:8px; padding:8px 12px; border-radius: 12px; background: rgba(0,0,0,.5); border: 1.5px solid rgba(255,255,255,.1) }
 
     /* Responsive */
-    @media (max-width: 1000px){
-      .hero{ grid-template-columns: 1fr; }
-      .grid{ grid-template-columns: repeat(2,1fr) }
-      .carousel .thumb{ min-width:220px }
-    }
-    @media (max-width:680px){
-      nav.primary{ display:none } /* hide nav on very small */
-      .grid{ grid-template-columns: 1fr }
-      .carousel .thumb{ min-width:180px; height:120px }
-      .modal iframe, .modal video{ height:320px }
-      .hero-left h1{ font-size:1.5rem }
-    }
+    @media (max-width:640px){ .profile{ grid-template-columns: 86px 1fr } .avatar{ width:86px; height:86px; border-radius: 22px } }
 
-    /* small micro-animations */
-    .pulse {
-      animation: pulse 2.4s infinite;
-      box-shadow: 0 8px 28px rgba(255,59,48,0.12);
-    }
-    @keyframes pulse {
-      0% { transform: translateY(0) scale(1) }
-      50% { transform: translateY(-4px) scale(1.01) }
-      100% { transform: translateY(0) scale(1) }
-    }
+    /* Fun custom cursor (optional) */
+    body.custom-cursor{ cursor: url('https://raw.githubusercontent.com/edent/SuperTinyIcons/master/images/svg/cursor-default.svg') 0 0, auto; }
+
+    /* Small util */
+    .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0 }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header class="topbar" role="banner" aria-label="Top navigation">
-      <div class="brand" title="Ishaan - Blockmango">
-        <img src="https://yt3.googleusercontent.com/sgMNqWe3c2QtjoKv2_Ifr_TSbIfd3YgqXLkFBNz_SUWZrK5mYj1PYI79HzAPNTpJCoizr_91Lg=s160-c-k-c0x00ffffff-no-rj" alt="Ishaan logo" />
+  <!-- Background -->
+  <div class="bg" id="bg"></div>
+  <div class="stars"></div>
+  <div class="vignette"></div>
+
+  <div class="wrap">
+    <main class="card" role="main" aria-label="Profile card">
+      <section class="profile">
+        <figure class="avatar" aria-label="Avatar"><img id="avatar" alt="Avatar" /></figure>
         <div>
-          <div class="title">Ishaan — Blockmango</div>
-          <div style="font-size:12px;color:var(--muted)">Gaming • Videos • Community</div>
+          <h1 class="name" id="name">Ishaan</h1>
+          <p class="bio" id="bio">Hello I am Ishaan, I am a Full‑Stack Developer and a YouTuber!</p>
+          <div class="meta">
+            <span class="chip" id="locationChip" title="Location">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 2a8 8 0 0 0-8 8c0 5 8 12 8 12s8-7 8-12a8 8 0 0 0-8-8m0 10a2 2 0 1 1 0-4a2 2 0 0 1 0 4"/></svg>
+              <span id="location">India</span>
+            </span>
+            <span class="chip" id="presence" title="Presence">last seen just now</span>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <nav class="primary" role="navigation" aria-label="Primary">
-        <a href="#videos">Videos</a>
-        <a href="#discord">Discord</a>
-        <a href="#symbol">Symbol</a>
-        <a href="#blockmango">Blockman GO</a>
-      </nav>
+      <div class="divider" role="separator" aria-hidden="true"></div>
 
-      <div class="actions">
-        <a class="btn btn--accent" href="https://www.youtube.com/@Ishaan-Blockmango" target="_blank" rel="noopener">🎥 Subscribe</a>
-        <button class="btn btn--discord" id="join-discord">💬 Join</button>
-      </div>
-    </header>
+      <section class="links" aria-label="Social links" id="links"></section>
+
+      <div class="divider" role="separator" aria-hidden="true"></div>
+
+      <footer class="footer">
+        <div class="views" id="views">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5C21.27 7.61 17 4.5 12 4.5m0 10a2.5 2.5 0 1 1 0-5a2.5 2.5 0 0 1 0 5"/></svg>
+          <span id="viewText">0 views</span>
+        </div>
+        <span>© <span id="year"></span> <strong>@Ishaan</strong></span>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // =====================
+    // CONFIG – edit this!
+    // =====================
+    const CONFIG = {
+      name: "Ishaan",
+      username: "ishaan.net", // used for view counter key
+      bio: "Hello I am Ishaan, I am a Full‑Stack Developer and a YouTuber!",
+      location: "India",
+      avatar: "https://i.imgur.com/5ZQF7Yt.gif", // replace with your GIF/avatar
+      background: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=2400&auto=format&fit=crop", // replace with your background
+      customCursor: false, // set true to enable the custom cursor defined in CSS
+      colors: {
+        bg: "#080808",
+        primary: "#6bff97",
+        text: "#e8ffef",
+        danger: "#ff3b3b"
+      },
+      // Add/Remove as you like. icon is inline SVG for zero requests.
+      links: [
+        { label: "YouTube", url: "https://youtube.com/@Era-BGofficial", icon: "yt" },
+        { label: "Discord", url: "https://discord.com/users/956557783707303957", icon: "discord" },
+        { label: "GitHub", url: "https://github.com/ishaan", icon: "github" },
+        { label: "Instagram", url: "https://instagram.com/your_handle", icon: "ig" },
+        { label: "Twitter / X", url: "https://x.com/your_handle", icon: "x" }
+      ]
+    };
+
+    // Apply theme
+    const setVar = (k, v) => document.documentElement.style.setProperty(k, v);
+    setVar('--bg', CONFIG.colors.bg);
+    setVar('--primary', CONFIG.colors.primary);
+    setVar('--text', CONFIG.colors.text);
+    setVar('--danger', CONFIG.colors.danger);
+
+    // Content
+    document.getElementById('name').textContent = CONFIG.name;
+    document.getElementById('bio').textContent = CONFIG.bio;
+    document.getElementById('location').textContent = CONFIG.location;
+    document.getElementById('avatar').src = CONFIG.avatar;
+    document.getElementById('bg').style.backgroundImage = `url('${CONFIG.background}')`;
+    document.getElementById('year').textContent = new Date().getFullYear();
+    if (CONFIG.customCursor) document.body.classList.add('custom-cursor');
+
+    // Presence mock (replace with real API if you want)
+    const presence = document.getElementById('presence');
+    const minutes = Math.floor(Math.random()*5)+1;
+    presence.textContent = `last seen ${minutes} minute${minutes>1?'s':''} ago`;
+
+    // Views – localStorage (swap with server counter if desired)
+    const key = `views:${CONFIG.username}`;
+    const views = Number(localStorage.getItem(key) || 0) + 1;
+    localStorage.setItem(key, views);
+    document.getElementById('viewText').textContent = `${views} view${views!==1?'s':''}`;
+
+    // Icons
+    const ICONS = {
+      yt: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M21.6 7.2a2.5 2.5 0 0 0-1.76-1.76C18.27 5 12 5 12 5s-6.27 0-7.84.44A2.5 2.5 0 0 0 2.4 7.2C2 8.77 2 12 2 12s0 3.23.4 4.8a2.5 2.5 0 0 0 1.76 1.76C5.73 19.99 12 20 12 20s6.27 0 7.84-.44a2.5 2.5 0 0 0 1.76-1.76C22 15.23 22 12 22 12s0-3.23-.4-4.8ZM10 15V9l5.2 3z"/></svg>',
+      discord: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M20.3 4.4A18 18 0 0 0 15.9 3l-.2.5c1.1.3 2.1.7 3.1 1.3c-1.3-.6-2.6-1-3.9-1.2c-.4-.1-.8-.1-1.2-.1s-.8 0-1.2.1c-1.3.2-2.6.6-3.9 1.2c1-.6 2-1 3.1-1.3L8.1 3A18 18 0 0 0 3.7 4.4C1.3 8 .3 11.4.3 15c1.8 2.5 4.5 3.9 7.3 4.9c.6-.8 1.1-1.6 1.6-2.5c-.9-.3-1.7-.7-2.4-1.2c.2-.1.4-.3.6-.4c2.4 1.1 5 1.1 7.4 0c.2.1.4.3.6.4c-.7.5-1.5.9-2.4 1.2c.5.9 1 1.7 1.6 2.5c2.8-1 5.5-2.4 7.3-4.9c0-3.6-1-7-3.4-10.6ZM8.9 14.1c-.7 0-1.3-.8-1.3-1.7s.6-1.7 1.3-1.7s1.3.8 1.3 1.7s-.6 1.7-1.3 1.7m6.2 0c-.7 0-1.3-.8-1.3-1.7s.6-1.7 1.3-1.7s1.3.8 1.3 1.7s-.6 1.7-1.3 1.7"/></svg>',
+      github: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2c-.5-1.1-1.2-1.4-1.2-1.4c-1-.7.1-.7.1-.7c1 .1 1.5 1.1 1.5 1.1c.9 1.5 2.3 1.1 2.8.8c.1-.7.4-1.1.7-1.4c-2.2-.3-4.5-1.1-4.5-5A3.9 3.9 0 0 1 7 7.6A3.6 3.6 0 0 1 7.1 5S8 4.7 10.1 6a12 12 0 0 1 3.8 0C16 4.7 16.9 5 16.9 5a3.6 3.6 0 0 1 .1 2.6a3.9 3.9 0 0 1 1 2.6c0 3.9-2.3 4.7-4.5 5c.4.3.8 1 .8 2.1v3.1c0 .3.2.6.7.5A10 10 0 0 0 12 2"/></svg>',
+      ig: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm5 3a5 5 0 1 1 0 10a5 5 0 0 1 0-10m0 2a3 3 0 1 0 0 6a3 3 0 0 0 0-6m5.5-.75a1.25 1.25 0 1 1 0 2.5a1.25 1.25 0 0 1 0-2.5"/></svg>',
+      x: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M3 3h18v18H3zm12.9 15L12.7 12l5.2-6H14l-2.9 3.8L8.3 6H6.1l4.6 6l-4.6 6h2.2l3.5-4.6L16 18z"/></svg>'
+    };
+
+    // Render links
+    const linksEl = document.getElementById('links');
+    CONFIG.links.forEach(l =>{
+      const a = document.createElement('a');
+      a.className = 'btn'; a.href = l.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.ariaLabel = l.label;
+      a.innerHTML = `${ICONS[l.icon]||''}<span>${l.label}</span>`;
+      linksEl.appendChild(a);
+    });
+
+    // Bonus: copy username on click
+    document.getElementById('name').addEventListener('click', ()=>{
+      navigator.clipboard.writeText('@'+CONFIG.username).catch(()=>{});
+    });
+  </script>
 </body>
 </html>

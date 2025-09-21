@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ishaan - Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #fff;
+      text-align: center;
+      animation: fadeIn 2s ease-in;
+    }
+
+    nav {
+      background: #1e1e1e;
+      padding: 15px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #00bcd4;
+    }
+
+    img.profile {
+      margin-top: 30px;
+      border-radius: 50%;
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      box-shadow: 0px 0px 20px #00bcd4;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    h1 {
+      margin-top: 20px;
+      font-size: 2.5rem;
+      color: #00bcd4;
+    }
+
+    .languages {
+      margin-top: 40px;
+    }
+
+    .languages img {
+      margin: 15px;
+      width: 100px;
+      transition: transform 0.3s;
+    }
+
+    .languages img:hover {
+      transform: scale(1.2);
+    }
+
+    .socials {
+      margin-top: 40px;
+      font-size: 18px;
+    }
+
+    .socials a {
+      display: block;
+      margin: 8px;
+      color: #00bcd4;
+      text-decoration: none;
+    }
+
+    .projects {
+      margin-top: 50px;
+    }
+
+    .projects button {
+      padding: 12px 25px;
+      border: none;
+      background: #00bcd4;
+      color: #fff;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .projects button:hover {
+      background: #0097a7;
+    }
+
+    footer {
+      margin-top: 50px;
+      padding: 15px;
+      background: #1e1e1e;
+      color: #888;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#languages">Languages</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="about">
+    <img src="https://lh3.googleusercontent.com/a/ACg8ocLhw3YhPpTri9cuxDc0ikRHl-qoS2ZhmN3G7nFKhOYr-g9Cu40=s288-c-no" alt="Ishaan" class="profile">
+    <h1>A Web and Software Developer</h1>
+  </section>
+
+  <section id="languages" class="languages">
+    <h2>Languages I Use</h2>
+    <div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/C_Programming_Language.svg" alt="C++">
+    </div>
+  </section>
+
+  <section id="contact" class="socials">
+    <h2>Connect with Me</h2>
+    <a href="https://www.instagram.com/ishaan11293/" target="_blank">Instagram</a>
+    <a href="https://discord.gg/xZQeRx2X42" target="_blank">Discord</a>
+    <a href="mailto:ishaanwebdev@gmail.com">Email: ishaanwebdev@gmail.com</a>
+  </section>
+
+  <section id="projects" class="projects">
+    <h2>My Projects</h2>
+    <button>Download Source Code</button>
+  </section>
+
+  <footer>
+    <p>© Ishaan - <span id="date"></span></p>
+  </footer>
+
+  <script>
+    document.getElementById('date').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
